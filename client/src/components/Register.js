@@ -17,12 +17,16 @@ export default function Register({ setShowRegister }) {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-
+    alert(JSON.stringify(newUser));
     try {
-      await axios.post("/users/register", newUser);
+      await axios.post(
+        "https://pin-google-map.herokuapp.com/api/register",
+        newUser
+      );
       setError(false);
       setSuccess(true);
     } catch (err) {
+      alert(err);
       setError(true);
     }
   };
